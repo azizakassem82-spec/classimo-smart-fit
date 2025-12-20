@@ -1,6 +1,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, ArrowDown } from 'lucide-react';
+import logo from '@/assets/logo.jpg';
 
 const Hero = () => {
   const { t, language } = useLanguage();
@@ -11,24 +12,34 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card" />
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/herobackground.mp4" type="video/mp4" />
+      </video>
       
-      {/* Decorative Elements */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-background/70" />
       
       {/* Gold accent lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       <div className="container mx-auto px-4 relative z-10 pt-20">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Brand Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fade-in">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-primary font-medium">
-              {language === 'ar' ? 'كلاسيمو' : 'Classimo'}
-            </span>
+          {/* Floating Logo */}
+          <div className="inline-block mb-8 animate-float">
+            <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-primary/50 shadow-gold">
+              <img 
+                src={logo} 
+                alt="Classimo Logo" 
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
 
           {/* Title */}
