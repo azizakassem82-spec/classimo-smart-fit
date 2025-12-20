@@ -29,7 +29,7 @@ const Hero = () => {
       {/* Gold accent lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
-      <div className="container mx-auto px-4 relative z-10 pt-20">
+      <div className="container mx-auto px-4 relative z-10 pt-24 md:pt-28">
         <div className="max-w-4xl mx-auto text-center">
           {/* Floating Logo */}
           <div className="inline-block mb-8 animate-float">
