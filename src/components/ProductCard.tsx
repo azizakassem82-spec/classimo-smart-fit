@@ -36,6 +36,8 @@ const ProductCard = ({ id, nameAr, nameFr, images, rentPrice, salePrice, sizes }
           src={images[0]}
           alt={productName}
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.5 }}
         />
@@ -44,6 +46,8 @@ const ProductCard = ({ id, nameAr, nameFr, images, rentPrice, salePrice, sizes }
           <img
             src={images[1]}
             alt={productName}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           />
         )}
