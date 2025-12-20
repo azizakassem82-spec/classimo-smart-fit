@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <motion.nav 
-      className={`fixed top-3 md:top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl transition-all duration-500 ${
+      className={`fixed top-3 md:top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-4xl transition-all duration-500 ${
         scrolled 
           ? 'bg-card/95 shadow-elegant border border-border/60' 
           : 'bg-card/80 border border-border/40'
@@ -52,7 +52,7 @@ const Navbar = () => {
       <div className="px-4 md:px-6">
         <div className="flex items-center justify-between h-14 md:h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 md:gap-3 group">
+          <Link to="/" className="flex items-center gap-2 md:gap-3 group flex-shrink-0">
             <motion.div 
               className={`w-9 h-9 md:w-11 md:h-11 rounded-full overflow-hidden border-2 transition-all duration-300 ${
                 scrolled ? 'border-primary' : 'border-primary/60'
