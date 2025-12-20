@@ -42,9 +42,9 @@ const Index = () => {
         <main className="min-h-screen bg-background">
           <Hero />
           <TrustBadges />
-          <SizeCalculator />
-          <Categories />
           <FeaturedProducts />
+          <Categories />
+          <SizeCalculator />
           <Testimonials />
           <InstagramFeed />
           <CTASection />
