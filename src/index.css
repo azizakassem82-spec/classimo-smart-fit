@@ -117,6 +117,13 @@
   .glass-card {
     @apply bg-card/80 backdrop-blur-md border border-border/50;
   }
+
+  .floating-nav {
+    @apply fixed top-3 left-1/2 -translate-x-1/2 z-50;
+    @apply bg-card/90 backdrop-blur-xl;
+    @apply border border-border/50 rounded-2xl;
+    @apply shadow-elegant;
+  }
 }
 
 @layer utilities {
