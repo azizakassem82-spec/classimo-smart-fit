@@ -182,3 +182,17 @@
     transform: translateX(-50%);
   }
 }
+
+/* Floating animation for logo */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
