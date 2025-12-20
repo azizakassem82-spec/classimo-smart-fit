@@ -1,6 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Star, Quote } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 const testimonials = [
   {
@@ -95,7 +95,7 @@ interface TestimonialCardProps {
 
 const TestimonialCard = ({ testimonial, language }: TestimonialCardProps) => {
   return (
-    <div className="glass-card rounded-2xl p-6 min-w-[300px] md:min-w-[350px] relative flex-shrink-0">
+    <div className="glass-card rounded-2xl p-6 w-[300px] md:w-[350px] relative flex-shrink-0">
       {/* Quote Icon */}
       <div className="absolute top-4 end-4 opacity-10">
         <Quote className="w-10 h-10 text-primary" />
@@ -135,11 +135,7 @@ const TestimonialCard = ({ testimonial, language }: TestimonialCardProps) => {
 
 const Testimonials = () => {
   const { language } = useLanguage();
-  const [isPaused, setIsPaused] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  // Double the testimonials for seamless loop
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section className="py-20 bg-background overflow-hidden">
@@ -162,28 +158,39 @@ const Testimonials = () => {
       {/* Scrolling Testimonials */}
       <div 
         className="relative"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {/* Gradient Masks */}
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
         
-        {/* Scrolling Container */}
-        <div
-          ref={scrollRef}
-          className={`flex gap-6 ${isPaused ? 'animate-scroll-slow' : 'animate-scroll'}`}
-          style={{
-            width: 'max-content',
-          }}
-        >
-          {duplicatedTestimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={`${testimonial.id}-${index}`}
-              testimonial={testimonial}
-              language={language}
-            />
-          ))}
+        {/* Infinite Scroll Track */}
+        <div className="overflow-hidden">
+          <div
+            className="flex gap-6"
+            style={{
+              animation: `marquee ${isHovered ? '60s' : '25s'} linear infinite`,
+              width: 'fit-content',
+            }}
+          >
+            {/* First set */}
+            {testimonials.map((testimonial) => (
+              <TestimonialCard
+                key={`first-${testimonial.id}`}
+                testimonial={testimonial}
+                language={language}
+              />
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {testimonials.map((testimonial) => (
+              <TestimonialCard
+                key={`second-${testimonial.id}`}
+                testimonial={testimonial}
+                language={language}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
