@@ -38,8 +38,8 @@ const instagramPosts = [
 const InstagramFeed = () => {
   const { language } = useLanguage();
 
-  const instagramHandle = '@classimo'; // Replace with your actual handle
-  const instagramUrl = 'https://instagram.com/classimo'; // Replace with your actual URL
+  const instagramHandle = '@classimo_';
+  const instagramUrl = 'https://www.instagram.com/classimo_/';
 
   return (
     <section className="py-20 bg-card/30">
