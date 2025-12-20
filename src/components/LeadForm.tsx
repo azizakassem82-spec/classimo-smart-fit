@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -204,10 +205,24 @@ Merci`;
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   };
 
+  const { toast } = useToast();
+
   const onSubmit = (data: FormData) => {
     setIsSubmitting(true);
     const url = getWhatsAppUrl(data);
     window.open(url, '_blank');
+    
+    // Show success toast
+    toast({
+      title: language === 'ar' ? '✓ تم إرسال الطلب' : '✓ Commande envoyée',
+      description: language === 'ar' 
+        ? 'سيتم التواصل معك قريباً عبر واتساب'
+        : 'Nous vous contacterons bientôt via WhatsApp',
+      duration: 5000,
+    });
+    
+    // Reset form after successful submission
+    form.reset();
     setIsSubmitting(false);
   };
 
