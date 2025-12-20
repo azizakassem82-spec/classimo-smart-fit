@@ -15,6 +15,7 @@ const Navbar = () => {
   const navLinks = [
     { key: 'nav.home', path: '/' },
     { key: 'nav.catalogue', path: '/catalogue' },
+    { key: 'nav.contact', path: '/contact' },
   ];
 
   const whatsappNumber = '213795443714';

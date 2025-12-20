@@ -104,6 +104,11 @@ const Footer = () => {
                   {t('nav.catalogue')}
                 </Link>
               </li>
+              <li>
+                <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.contact')}
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -48,6 +48,8 @@ const InstagramFeed = () => {
               <img
                 src={image}
                 alt={`Instagram post ${index + 1}`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               {/* Overlay */}
